@@ -9,6 +9,7 @@
     <string name="code" required="true" unique="true" min="2"/>
     <string name="name" required="true" unique="true" min="2"/>
     <decimal name="rate" precision="6" scale="4" min="0.0"/>
+    <one-to-many name="lineTaxes" ref="Tax" />
   </entity>
 
 </domain-models>

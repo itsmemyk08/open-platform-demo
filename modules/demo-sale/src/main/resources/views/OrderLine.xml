@@ -16,6 +16,12 @@
       <field name="price" />
       <field name="quantity" />
     </panel>
+    <panel-related field="items" editable="true" orderBy="sequence" canMove="true">
+      <field name="product" onChange="action-order-line-change-product"/>
+      <field name="price"/>
+      <field name="quantity"/>
+      <field name="taxes"/>
+    </panel-related>
     <panel-related field="taxes">
       <field name="name" />
       <field name="rate" />
