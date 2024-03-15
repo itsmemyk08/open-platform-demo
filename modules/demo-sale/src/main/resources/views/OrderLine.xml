@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views https://axelor.com/xml/ns/object-views/object-views_6.1.xsd">
 
-  <grid name="order-line-grid" title="Ordered Items" model="com.axelor.sale.db.OrderLine">
+  <grid name="order-line-grid" title="Ordered Items" model="com.axelor.sale.db.OrderLine" editable="true" expandable-form-view="order-line-nested">
     <field name="order" />
     <field name="product" onChange="action-order-line-change-product"/>
     <field name="price" />
@@ -26,6 +26,21 @@
       <field name="name" />
       <field name="rate" />
     </panel-related>
+  </form>
+
+  <form name="order-line-nested" title="Ordered Item" model="com.axelor.sale.db.OrderLine">
+    <panel-related 
+      title="Add new line"
+      field="items"
+      editable="true"
+      x-show-header="false"
+      x-display-mode="tree"
+      x-expand-all="items"
+      x-expandable="true"
+      x-expandable-form="order-line-nested"
+      grid-view="order-line-grid"
+      form-view="order-line-form"
+    />
   </form>
 
   <action-record name="action-order-line-change-product" model="com.axelor.sale.db.OrderLine">
