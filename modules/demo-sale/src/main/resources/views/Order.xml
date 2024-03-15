@@ -36,14 +36,26 @@
       <field name="currency" readonlyIf="confirmed" form-view="currency-form" grid-view="currency-grid" onChange="com.axelor.sale.web.SaleOrderController:calculate"/>
     </panel>
     <panel-tabs>
-      <panel-related field="items" editable="true" readonlyIf="confirmed"
+      <panel-related 
+        readonlyIf="confirmed"
+        field="items"
+        editable="true"
+        onChange="com.axelor.sale.web.SaleOrderController:computeItems"
+        x-expandable="true"
+        x-widget="CollectionTree"
+        x-display-mode="tree"
+        x-expand-all="items"
+        form-view="order-line-form"
+        grid-view="order-line-grid"
+      />
+      <!-- <panel-related field="items" editable="true" readonlyIf="confirmed"
         orderBy="sequence" canMove="true"
         onChange="com.axelor.sale.web.SaleOrderController:calculate">
         <field name="product" onChange="action-order-line-change-product"/>
         <field name="price"/>
         <field name="quantity"/>
         <field name="taxes"/>
-      </panel-related>
+      </panel-related> -->
       <panel title="Notes">
         <field name="notes" showTitle="false" colSpan="12" widget="html" />
       </panel>
