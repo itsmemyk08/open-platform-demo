@@ -155,6 +155,19 @@ public class SaleOrderController extends JpaSupport {
 			}
 
 			item.put("items", subItems);
+		} else {
+			for (Object _subItem : subItems) {
+				Map<String, Object> subItem = (Map<String, Object>) _subItem;
+				OrderLine line = findOrderLine(subItem);
+				if (line != null) {
+					if (!subItem.containsKey("price")) {
+						subItem.put("price", line.getPrice());
+					}
+					if (!subItem.containsKey("product")) {
+						subItem.put("product", Resource.toMapCompact(line.getProduct()));
+					}
+				}
+			}
 		}
 
 		return subItems;
